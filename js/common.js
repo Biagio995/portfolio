@@ -59,7 +59,7 @@ const translations = {
 };
 
 function translatePage(lang) {
-  const t = translations[lang] || translations.en;
+  const t = translations[lang] || translations.it;
 
   // Navbar
   const homeLink = document.querySelector('a[href="index.html"]');
