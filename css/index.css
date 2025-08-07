@@ -43,3 +43,27 @@ header, footer {
 #lang-select option {
   color: black; /* colore testo interno dropdown */
 }
+
+/* Mostra solo desktop wrapper su schermi grandi (lg = 992px+) */
+#language-wrapper-desktop {
+  display: none;
+}
+@media (min-width: 992px) {
+  #language-wrapper-desktop {
+    display: flex !important;
+  }
+  #language-wrapper-mobile {
+    display: none !important;
+  }
+}
+
+/* Mostra solo mobile wrapper sotto 992px */
+#language-wrapper-mobile {
+  display: flex;
+  justify-content: flex-start;
+}
+@media (min-width: 992px) {
+  #language-wrapper-mobile {
+    display: none !important;
+  }
+}
