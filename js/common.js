@@ -42,14 +42,25 @@ const translations = {
 
 let currentLang = localStorage.getItem("lang") || "en";
 let typingTimeout;
+let isTyping = false;
 
 function typeWriterEffect(text, element, i = 0) {
-  if (typingTimeout) clearTimeout(typingTimeout);
+  if (isTyping) return; // blocca chiamate multiple
+  isTyping = true;
   
-  if (i < text.length) {
-    element.appendChild(document.createTextNode(text.charAt(i)));
-    typingTimeout = setTimeout(() => typeWriterEffect(text, element, i + 1), 60);
+  element.textContent = ""; // pulisce prima di scrivere
+  
+  function type() {
+    if (i < text.length) {
+      element.appendChild(document.createTextNode(text.charAt(i)));
+      i++;
+      typingTimeout = setTimeout(type, 60);
+    } else {
+      isTyping = false; // fine scrittura
+    }
   }
+  
+  type();
 }
 
 function translatePage(lang) {
@@ -68,7 +79,6 @@ function translatePage(lang) {
   // Typewriter
   const typewriterTextEl = document.getElementById("typewriter-text");
   if(typewriterTextEl){
-    typewriterTextEl.textContent = "";
     typeWriterEffect(t.typewriter, typewriterTextEl);
   }
   
@@ -173,7 +183,6 @@ window.addEventListener("DOMContentLoaded", () => {
   translatePage(currentLang);
   createLangSelector();
 });
-
 
 
 window.addEventListener("DOMContentLoaded", () => {
