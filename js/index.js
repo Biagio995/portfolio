@@ -1,18 +1,3 @@
-// Typewriter effect senza innerHTML
-const text = "Designer. Developer. Innovatore.";
-const target = document.getElementById("typewriter-text");
-let i = 0;
-const speed = 60;
-
-function typeWriter() {
-    if (i < text.length) {
-        const charNode = document.createTextNode(text.charAt(i));
-        target.appendChild(charNode);
-        i++;
-        setTimeout(typeWriter, speed);
-    }
-}
-
 // Hover effect su progetti
 window.addEventListener("DOMContentLoaded", () => {
     typeWriter();

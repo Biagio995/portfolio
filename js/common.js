@@ -1,5 +1,6 @@
 const translations = {
   en: {
+    navBrand: "My Portfolio",
     navHome: "Home",
     navContacts: "Contacts",
     headerTitle: "My Portfolio",
@@ -10,9 +11,12 @@ const translations = {
     project1: "🌐 Personal website",
     project2: "📊 Interactive dashboard",
     contactButton: "Contact Me",
-    footerText: "© 2025 - Biagio Carannante"
+    footerText: "© 2025 - Biagio Carannante",
+    name: "Name",
+    message: "Message"
   },
   it: {
+    navBrand: "Il Mio Portfolio",
     navHome: "Home",
     navContacts: "Contatti",
     headerTitle: "Il Mio Portfolio",
@@ -23,9 +27,12 @@ const translations = {
     project1: "🌐 Sito personale",
     project2: "📊 Dashboard interattiva",
     contactButton: "Contattami",
-    footerText: "© 2025 - Biagio Carannante"
+    footerText: "© 2025 - Biagio Carannante",
+    name: "Nome",
+    message: "Messaggio"
   },
   el: {
+    navBrand: "Το Portfolio μου",
     navHome: "Αρχική",
     navContacts: "Επικοινωνία",
     headerTitle: "Το Portfolio μου",
@@ -36,7 +43,9 @@ const translations = {
     project1: "🌐 Προσωπικός ιστότοπος",
     project2: "📊 Διαδραστικός πίνακας ελέγχου",
     contactButton: "Επικοινωνήστε μαζί μου",
-    footerText: "© 2025 - Biagio Carannante"
+    footerText: "© 2025 - Biagio Carannante",
+    name: "Όνομα",
+    message: "Μήνυμα"
   }
 };
 
@@ -45,161 +54,137 @@ let typingTimeout;
 let isTyping = false;
 
 function typeWriterEffect(text, element, i = 0) {
-  if (isTyping) return; // blocca chiamate multiple
+  if (isTyping) return;
   isTyping = true;
-  
-  element.textContent = ""; // pulisce prima di scrivere
-  
+  element.textContent = "";
+
   function type() {
     if (i < text.length) {
       element.appendChild(document.createTextNode(text.charAt(i)));
       i++;
       typingTimeout = setTimeout(type, 60);
     } else {
-      isTyping = false; // fine scrittura
+      isTyping = false;
     }
   }
-  
+
   type();
 }
 
 function translatePage(lang) {
   const t = translations[lang] || translations["en"];
-  
-  // Nav
+
+  // Navbar brand
+  const navBrand = document.querySelector(".navbar-brand");
+  if (navBrand) navBrand.textContent = t.navBrand;
+
+  // Labels
+  const labelName = document.querySelector("label[for='name']");
+  const labelMessage = document.querySelector("label[for='message']");
+  if (labelName) labelName.textContent = t.name;
+  if (labelMessage) labelMessage.textContent = t.message;
+
+  // Navbar links
   const navHome = document.querySelector('a.nav-link[href*="index.html"]');
   const navContacts = document.querySelector('a.nav-link[href*="contatti.html"]');
-  if(navHome) navHome.textContent = t.navHome;
-  if(navContacts) navContacts.textContent = t.navContacts;
-  
-  // Header
+  if (navHome) navHome.textContent = t.navHome;
+  if (navContacts) navContacts.textContent = t.navContacts;
+
+  // Header title
   const headerTitle = document.querySelector("header h1");
-  if(headerTitle) headerTitle.textContent = t.headerTitle;
-  
-  // Typewriter
+  if (headerTitle) headerTitle.textContent = t.headerTitle;
+
+  // Typewriter effect
   const typewriterTextEl = document.getElementById("typewriter-text");
-  if(typewriterTextEl){
+  if (typewriterTextEl) {
     typeWriterEffect(t.typewriter, typewriterTextEl);
   }
-  
-  // Sections
+
+  // Section: Who I Am
   const whoIAmTitle = document.querySelector("section h2");
-  if(whoIAmTitle) whoIAmTitle.textContent = t.whoIAmTitle;
-  
+  if (whoIAmTitle) whoIAmTitle.textContent = t.whoIAmTitle;
+
   const whoIAmText = document.querySelector("section p");
-  if(whoIAmText) whoIAmText.textContent = t.whoIAmText;
-  
-  // Recent Projects Section
+  if (whoIAmText) whoIAmText.textContent = t.whoIAmText;
+
+  // Section: Recent Projects
   const sections = document.querySelectorAll("main section");
-  if(sections.length > 1){
+  if (sections.length > 1) {
     const recentProjectsTitle = sections[1].querySelector("h2");
-    if(recentProjectsTitle) recentProjectsTitle.textContent = t.recentProjectsTitle;
-    
+    if (recentProjectsTitle) recentProjectsTitle.textContent = t.recentProjectsTitle;
+
     const projects = sections[1].querySelectorAll(".list-group-item");
-    if(projects.length >= 2){
+    if (projects.length >= 2) {
       projects[0].textContent = t.project1;
       projects[1].textContent = t.project2;
     }
   }
-  
+
   // Contact button
   const contactBtn = document.querySelector("main a.btn-custom");
-  if(contactBtn) contactBtn.textContent = t.contactButton;
-  
+  if (contactBtn) contactBtn.textContent = t.contactButton;
+
   // Footer
   const footer = document.querySelector("footer p");
-  if(footer) footer.textContent = t.footerText;
+  if (footer) footer.textContent = t.footerText;
 }
 
 function createLangSelector() {
-  const container = document.createElement("div");
-  container.style.position = "fixed";
-  container.style.top = "10px";
-  container.style.right = "10px";
-  container.style.backgroundColor = "rgba(25,22,84,0.85)";
-  container.style.padding = "6px 10px";
-  container.style.borderRadius = "8px";
-  container.style.zIndex = "9999";
-  container.style.fontFamily = "'Segoe UI', sans-serif";
-  container.style.color = "white";
-  container.style.userSelect = "none";
-  container.style.cursor = "pointer";
-  
-  const langDisplay = document.createElement("span");
-  langDisplay.style.fontWeight = "bold";
+  const container = document.getElementById("language-selector-container");
 
-  const dropdown = document.createElement("div");
-  dropdown.style.position = "absolute";
-  dropdown.style.top = "100%";
-  dropdown.style.right = "0";
-  dropdown.style.backgroundColor = "rgba(25,22,84,0.95)";
-  dropdown.style.borderRadius = "6px";
-  dropdown.style.marginTop = "4px";
-  dropdown.style.minWidth = "50px";
-  dropdown.style.display = "none";
-  dropdown.style.flexDirection = "column";
-  dropdown.style.boxShadow = "0 2px 8px rgba(0,0,0,0.3)";
-  
-  function updateDropdown() {
-    langDisplay.textContent = currentLang.toUpperCase();
-    dropdown.innerHTML = ""; // svuota dropdown
-    
-    ["en","it","el"].forEach(langCode => {
-      if(langCode === currentLang) return; // non mostrare la lingua corrente
-      
-      const option = document.createElement("div");
-      option.textContent = langCode.toUpperCase();
-      option.style.padding = "6px 10px";
-      option.style.userSelect = "none";
-      
-      option.addEventListener("mouseenter", () => {
-        option.style.backgroundColor = "#41BBA6";
-        option.style.color = "#191654";
-      });
-      option.addEventListener("mouseleave", () => {
-        option.style.backgroundColor = "transparent";
-        option.style.color = "white";
-      });
-      
-      option.addEventListener("click", () => {
-        currentLang = langCode;
-        localStorage.setItem("lang", currentLang);
-        langDisplay.textContent = currentLang.toUpperCase();
-        dropdown.style.display = "none";
-        translatePage(currentLang);
-        updateDropdown();
-      });
-      
-      dropdown.appendChild(option);
-    });
+  // Pulisce eventuali figli esistenti
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
   }
 
-  updateDropdown();
+  const langToggle = document.createElement("a");
+  langToggle.className = "nav-link dropdown-toggle";
+  langToggle.href = "#";
+  langToggle.id = "langDropdown";
+  langToggle.setAttribute("role", "button");
+  langToggle.setAttribute("data-bs-toggle", "dropdown");
+  langToggle.setAttribute("aria-expanded", "false");
+  langToggle.textContent = currentLang.toUpperCase();
 
-  container.appendChild(langDisplay);
-  container.appendChild(dropdown);
-  
-  container.addEventListener("click", () => {
-    dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+  const dropdownMenu = document.createElement("ul");
+  dropdownMenu.className = "dropdown-menu dropdown-menu-end";
+  dropdownMenu.setAttribute("aria-labelledby", "langDropdown");
+
+  ["en", "it", "el"].forEach((langCode) => {
+    if (langCode === currentLang) return;
+
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.className = "dropdown-item";
+    a.href = "#";
+    a.textContent = langCode.toUpperCase();
+
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      currentLang = langCode;
+      localStorage.setItem("lang", currentLang);
+      translatePage(currentLang);
+      createLangSelector();
+    });
+
+    li.appendChild(a);
+    dropdownMenu.appendChild(li);
   });
-  
-  document.body.appendChild(container);
+
+  container.appendChild(langToggle);
+  container.appendChild(dropdownMenu);
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  translatePage(currentLang);
-  createLangSelector();
-});
-
-window.addEventListener("DOMContentLoaded", () => {
-  const currentPage = window.location.pathname.split("/").pop(); // es. "index.html" o "contatti.html"
+function highlightCurrentNav() {
+  const currentPage = window.location.pathname.split("/").pop();
   const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
-  
+
   navLinks.forEach(link => {
-    // Ottieni href solo filename, senza path o query string
     const linkPage = link.getAttribute("href").split("/").pop();
-    
-    if (linkPage === currentPage || (linkPage === "index.html" && (currentPage === "" || currentPage === "/"))) {
+    if (
+      linkPage === currentPage ||
+      (linkPage === "index.html" && (currentPage === "" || currentPage === "/"))
+    ) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
     } else {
@@ -207,4 +192,10 @@ window.addEventListener("DOMContentLoaded", () => {
       link.removeAttribute("aria-current");
     }
   });
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  translatePage(currentLang);
+  createLangSelector();
+  highlightCurrentNav();
 });
