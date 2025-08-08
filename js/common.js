@@ -74,40 +74,41 @@ function typeWriterEffect(text, element, i = 0) {
 function translatePage(lang) {
   const t = translations[lang] || translations["en"];
 
-  // Navbar brand
+  // Brand
   const navBrand = document.querySelector(".navbar-brand");
   if (navBrand) navBrand.textContent = t.navBrand;
 
-  // Labels
+  // Navbar links tramite ID
+  const navHome = document.getElementById("nav-home");
+  if (navHome) navHome.textContent = t.navHome;
+
+  const navContacts = document.getElementById("nav-contacts");
+  if (navContacts) navContacts.textContent = t.navContacts;
+
+  // Labels form
   const labelName = document.querySelector("label[for='name']");
   const labelMessage = document.querySelector("label[for='message']");
   if (labelName) labelName.textContent = t.name;
   if (labelMessage) labelMessage.textContent = t.message;
 
-  // Navbar links
-  const navHome = document.querySelector('a.nav-link[href*="index.html"]');
-  const navContacts = document.querySelector('a.nav-link[href*="contatti.html"]');
-  if (navHome) navHome.textContent = t.navHome;
-  if (navContacts) navContacts.textContent = t.navContacts;
-
-  // Header title
+  // Titolo header
   const headerTitle = document.querySelector("header h1");
   if (headerTitle) headerTitle.textContent = t.headerTitle;
 
-  // Typewriter effect
+  // Effetto macchina da scrivere
   const typewriterTextEl = document.getElementById("typewriter-text");
   if (typewriterTextEl) {
     typeWriterEffect(t.typewriter, typewriterTextEl);
   }
 
-  // Section: Who I Am
+  // Chi sono
   const whoIAmTitle = document.querySelector("section h2");
   if (whoIAmTitle) whoIAmTitle.textContent = t.whoIAmTitle;
 
   const whoIAmText = document.querySelector("section p");
   if (whoIAmText) whoIAmText.textContent = t.whoIAmText;
 
-  // Section: Recent Projects
+  // Progetti recenti
   const sections = document.querySelectorAll("main section");
   if (sections.length > 1) {
     const recentProjectsTitle = sections[1].querySelector("h2");
@@ -120,7 +121,7 @@ function translatePage(lang) {
     }
   }
 
-  // Contact button
+  // Bottone contatti
   const contactBtn = document.querySelector("main a.btn-custom");
   if (contactBtn) contactBtn.textContent = t.contactButton;
 
@@ -132,7 +133,6 @@ function translatePage(lang) {
 function createLangSelector() {
   const container = document.getElementById("language-selector-container");
 
-  // Pulisce eventuali figli esistenti
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
@@ -181,10 +181,7 @@ function highlightCurrentNav() {
 
   navLinks.forEach(link => {
     const linkPage = link.getAttribute("href").split("/").pop();
-    if (
-      linkPage === currentPage ||
-      (linkPage === "index.html" && (currentPage === "" || currentPage === "/"))
-    ) {
+    if (linkPage === currentPage || (linkPage === "index.html" && (currentPage === "" || currentPage === "/"))) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
     } else {
@@ -194,7 +191,8 @@ function highlightCurrentNav() {
   });
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+// Avvio traduzione e funzioni al caricamento completo
+window.addEventListener("load", () => {
   translatePage(currentLang);
   createLangSelector();
   highlightCurrentNav();
