@@ -13,7 +13,8 @@ const translations = {
     contactButton: "Contact Me",
     footerText: "© 2025 - Biagio Carannante",
     name: "Name",
-    message: "Message"
+    message: "Message",
+    contactNameForm: "Contact Me"
   },
   it: {
     navBrand: "Il Mio Portfolio",
@@ -29,7 +30,8 @@ const translations = {
     contactButton: "Contattami",
     footerText: "© 2025 - Biagio Carannante",
     name: "Nome",
-    message: "Messaggio"
+    message: "Messaggio",
+    contactNameForm: "Contattami"
   },
   el: {
     navBrand: "Το Portfolio μου",
@@ -45,7 +47,8 @@ const translations = {
     contactButton: "Επικοινωνήστε μαζί μου",
     footerText: "© 2025 - Biagio Carannante",
     name: "Όνομα",
-    message: "Μήνυμα"
+    message: "Μήνυμα",
+    contactNameForm: "Επικοινωνήστε μαζί μου"
   }
 };
 
@@ -100,6 +103,10 @@ function translatePage(lang) {
   if (typewriterTextEl) {
     typeWriterEffect(t.typewriter, typewriterTextEl);
   }
+
+  //Contattami
+  const contactNameForm = document.getElementById("contactNameForm");
+  if (contactNameForm) contactNameForm.textContent = t.contactNameForm;
 
   // Chi sono
   const whoIAmTitle = document.querySelector("section h2");
