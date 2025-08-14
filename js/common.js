@@ -6,7 +6,7 @@ const translations = {
     headerTitle: "My Portfolio",
     typewriter: "Designer. Developer. Innovator.",
     whoIAmTitle: "About Me",
-    whoIAmText: "I am a creative developer with a passion for modern and functional design. I create impactful digital experiences.",
+    whoIAmText: "I am a creative developer with passion for modern and functional design. I create impactful digital experiences.",
     recentProjectsTitle: "Recent Projects",
     project1: "🌐 Personal website",
     project2: "📊 Interactive dashboard",
