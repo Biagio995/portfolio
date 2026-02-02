@@ -24,16 +24,17 @@
         {{ item.title }}
       </v-btn>
 
-      <!-- Language Selector Desktop -->
-      <v-menu offset-y class="d-none d-md-inline-flex">
+      <!-- Language Selector (visible on all screens) -->
+      <v-menu offset-y>
         <template v-slot:activator="{ props }">
           <v-btn
             v-bind="props"
             variant="text"
+            size="small"
             class="ml-2"
           >
             {{ currentLocale.toUpperCase() }}
-            <v-icon right>mdi-chevron-down</v-icon>
+            <v-icon right size="small">mdi-chevron-down</v-icon>
           </v-btn>
         </template>
         <v-list>
@@ -69,17 +70,6 @@
         @click="drawer = false"
       >
         <v-list-item-title>{{ item.title }}</v-list-item-title>
-      </v-list-item>
-
-      <v-divider class="my-2"></v-divider>
-
-      <v-list-subheader>{{ t('nav.language') || 'Language' }}</v-list-subheader>
-      <v-list-item
-        v-for="lang in availableLocales"
-        :key="lang"
-        @click="changeLocale(lang); drawer = false"
-      >
-        <v-list-item-title>{{ lang.toUpperCase() }}</v-list-item-title>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
