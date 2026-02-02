@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "brand": "Il Mio Portfolio",
+    "home": "Home",
+    "contacts": "Contatti"
+  },
+  "home": {
+    "title": "Il Mio Portfolio",
+    "typewriter": "Designer. Developer. Innovatore.",
+    "whoAmI": {
+      "title": "Chi Sono",
+      "text": "Sono uno sviluppatore creativo con la passione per il design moderno e funzionale. Realizzo esperienze digitali di impatto."
+    },
+    "recentProjects": {
+      "title": "Progetti Recenti"
+    },
+    "contactButton": "Contattami"
+  },
+  "contacts": {
+    "title": "Contattami",
+    "form": {
+      "name": "Nome",
+      "message": "Messaggio",
+      "nameRequired": "Il nome è obbligatorio",
+      "messageRequired": "Il messaggio è obbligatorio",
+      "email": "Invia Email",
+      "whatsapp": "WhatsApp",
+      "viber": "Viber"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 - Biagio Carannante"
+  }
+}

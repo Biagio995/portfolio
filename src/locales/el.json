@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "brand": "Το Portfolio μου",
+    "home": "Αρχική",
+    "contacts": "Επικοινωνία"
+  },
+  "home": {
+    "title": "Το Portfolio μου",
+    "typewriter": "Σχεδιαστής. Προγραμματιστής. Καινοτόμος.",
+    "whoAmI": {
+      "title": "Λίγα λόγια για μένα",
+      "text": "Είμαι ένας δημιουργικός προγραμματιστής με πάθος για μοντέρνο και λειτουργικό σχεδιασμό. Δημιουργώ ψηφιακές εμπειρίες με αντίκτυπο."
+    },
+    "recentProjects": {
+      "title": "Πρόσφατα Έργα"
+    },
+    "contactButton": "Επικοινωνήστε μαζί μου"
+  },
+  "contacts": {
+    "title": "Επικοινωνήστε μαζί μου",
+    "form": {
+      "name": "Όνομα",
+      "message": "Μήνυμα",
+      "nameRequired": "Το όνομα είναι υποχρεωτικό",
+      "messageRequired": "Το μήνυμα είναι υποχρεωτικό",
+      "email": "Αποστολή Email",
+      "whatsapp": "WhatsApp",
+      "viber": "Viber"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 - Biagio Carannante"
+  }
+}

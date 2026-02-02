@@ -1,0 +1,81 @@
+// Main stylesheet for Portfolio application
+
+// Variables
+$gradient-start: #191654;
+$gradient-end: #41BBA6;
+
+// Global styles
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// App background
+.v-application {
+  background: linear-gradient(135deg, $gradient-start 0%, $gradient-end 100%) !important;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gradient-end;
+  border-radius: 6px;
+  
+  &:hover {
+    background: lighten($gradient-end, 10%);
+  }
+}
+
+// Utility classes
+.text-gradient {
+  background: linear-gradient(135deg, $gradient-end 0%, lighten($gradient-end, 20%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Transitions
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// Card hover effects
+.v-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// Button animations
+.v-btn {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
