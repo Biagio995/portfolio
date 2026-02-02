@@ -35,29 +35,10 @@
       <v-row justify="center" class="mb-12">
         <v-col cols="12" md="10" lg="8">
           <v-card class="pa-8" elevation="4">
-            <v-row align="center">
-              <!-- Profile Image (visible only on medium+ screens in about section) -->
-              <v-col cols="12" md="4" class="text-center d-none d-md-block">
-                <v-avatar
-                  size="200"
-                  class="profile-avatar-about elevation-6"
-                >
-                  <v-img
-                    src="/images/profile.png"
-                    alt="Biagio Carannante"
-                    cover
-                  ></v-img>
-                </v-avatar>
-              </v-col>
-              
-              <!-- About Text -->
-              <v-col cols="12" md="8">
-                <h2 class="text-h4 mb-4">{{ t('home.whoAmI.title') }}</h2>
-                <p class="text-body-1">
-                  {{ t('home.whoAmI.text') }}
-                </p>
-              </v-col>
-            </v-row>
+            <h2 class="text-h4 mb-4">{{ t('home.whoAmI.title') }}</h2>
+            <p class="text-body-1">
+              {{ t('home.whoAmI.text') }}
+            </p>
           </v-card>
         </v-col>
       </v-row>
@@ -169,16 +150,6 @@ watch(locale, () => {
     transform: scale(1.05);
     border-color: rgba(65, 187, 166, 1);
     box-shadow: 0 8px 24px rgba(65, 187, 166, 0.4);
-  }
-}
-
-.profile-avatar-about {
-  border: 3px solid rgba(65, 187, 166, 0.5);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: scale(1.05);
-    border-color: rgba(65, 187, 166, 0.8);
   }
 }
 
