@@ -5,18 +5,23 @@ import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import '@mdi/font/css/materialdesignicons.css'
 
+// Elegant Minimalism palette
 const customTheme = {
-  dark: true,
+  dark: false,
   colors: {
-    primary: '#41BBA6',
-    secondary: '#191654',
-    accent: '#35a396',
+    primary: '#333333',
+    secondary: '#333333',
+    accent: '#707070',
     error: '#FF5252',
     info: '#2196F3',
     success: '#4CAF50',
     warning: '#FFC107',
-    background: '#191654',
-    surface: '#1E1E1E',
+    background: '#F0F0F0',
+    surface: '#FFFFFF',
+    'on-background': '#333333',
+    'on-surface': '#333333',
+    'on-primary': '#FFFFFF',
+    'on-secondary': '#FFFFFF',
     whatsapp: '#25D366',
     viber: '#7360F2'
   }

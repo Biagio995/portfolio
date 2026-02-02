@@ -2,7 +2,7 @@
   <v-container class="contacts-view py-12">
     <v-row justify="center">
       <v-col cols="12" md="8" lg="6">
-        <h1 class="text-h3 text-center mb-8">{{ t('contacts.title') }}</h1>
+        <h1 class="text-h3 text-center mb-8 contacts-title">{{ t('contacts.title') }}</h1>
 
         <v-card class="pa-6" elevation="4">
           <v-form ref="formRef" v-model="valid" @submit.prevent="handleSubmit">
@@ -158,5 +158,9 @@ const handleSubmit = () => {
 <style scoped lang="scss">
 .contacts-view {
   min-height: calc(100vh - 64px);
+}
+
+.contacts-title {
+  color: #333333;
 }
 </style>

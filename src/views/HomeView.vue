@@ -3,7 +3,7 @@
     <!-- Hero Section -->
     <v-container fluid class="hero-section pa-0">
       <v-container class="py-16">
-        <v-row justify="center" align="center" class="text-center">
+        <v-row justify="center" align="center" class="text-center hero-content">
           <v-col cols="12">
             <!-- Profile Image -->
             <v-avatar
@@ -17,10 +17,10 @@
               ></v-img>
             </v-avatar>
             
-            <h1 class="text-h2 text-md-h1 font-weight-bold mb-4">
+            <h1 class="text-h2 text-md-h1 font-weight-bold mb-4 hero-title">
               {{ t('home.title') }}
             </h1>
-            <p class="text-h5 text-md-h4 typewriter-text">
+            <p class="text-h5 text-md-h4 typewriter-text hero-subtitle">
               {{ displayedText }}
               <span class="cursor">|</span>
             </p>
@@ -46,7 +46,7 @@
       <!-- Recent Projects Section -->
       <v-row justify="center" class="mb-12">
         <v-col cols="12" md="10" lg="8">
-          <h2 class="text-h4 mb-6">{{ t('home.recentProjects.title') }}</h2>
+          <h2 class="text-h4 mb-6 section-title">{{ t('home.recentProjects.title') }}</h2>
           <v-list bg-color="transparent">
             <v-list-item
               v-for="project in projects"
@@ -106,7 +106,7 @@ const startTypewriter = () => {
 
 onMounted(() => {
   startTypewriter()
-  console.log('%c👋 Benvenuto sviluppatore curioso! Hai trovato l\'easter egg. ✨', 'color: #41BBA6; font-size: 16px; font-weight: bold;')
+  console.log('%c👋 Benvenuto sviluppatore curioso! Hai trovato l\'easter egg. ✨', 'color: #333333; font-size: 16px; font-weight: bold;')
 })
 
 watch(locale, () => {
@@ -120,8 +120,21 @@ watch(locale, () => {
 }
 
 .hero-section {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(240, 240, 240, 0.95);
   backdrop-filter: blur(10px);
+}
+
+.hero-content,
+.hero-title,
+.hero-subtitle,
+.section-title {
+  color: #333333 !important;
+}
+
+.home-view :deep(.v-list-item-title),
+.home-view :deep(.v-card .v-card-text),
+.home-view :deep(.v-card p) {
+  color: #333333;
 }
 
 .typewriter-text {
@@ -143,23 +156,24 @@ watch(locale, () => {
 }
 
 .profile-avatar {
-  border: 4px solid rgba(65, 187, 166, 0.6);
+  border: 4px solid #B0B0B0;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: scale(1.05);
-    border-color: rgba(65, 187, 166, 1);
-    box-shadow: 0 8px 24px rgba(65, 187, 166, 0.4);
+    border-color: #333333;
+    box-shadow: 0 8px 24px rgba(51, 51, 51, 0.2);
   }
 }
 
 .project-item {
   transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.8);
 
   &:hover {
     transform: scale(1.03);
-    background: rgba(255, 255, 255, 0.1);
+    background: #FFFFFF;
+    box-shadow: 0 2px 12px rgba(51, 51, 51, 0.08);
   }
 }
 </style>
