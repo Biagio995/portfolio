@@ -95,45 +95,40 @@
               cols="12"
               sm="6"
             >
-              <div
-                class="project-flip"
-                :class="{ 'is-flipped': flippedProjectId === project.id }"
-                tabindex="0"
-                @click="toggleFlip(project.id)"
-                @keyup.enter="toggleFlip(project.id)"
-              >
-                <div class="project-flip__inner">
-                  <div
-                    class="project-flip__face project-flip__front"
-                    :class="{ 'project-flip__front--no-image': !project.image }"
-                  >
-                    <v-img
-                      v-if="project.image"
-                      :src="project.image"
-                      :alt="project.name"
-                      height="200"
-                      cover
-                    />
-                    <div class="project-flip__title text-h6">
-                      {{ project.name }}
-                    </div>
-                  </div>
-
-                  <div class="project-flip__face project-flip__back">
-                    <h3 class="text-h6 font-weight-bold mb-3">{{ project.name }}</h3>
-                    <p class="text-body-2 project-flip__description mb-4">
-                      {{ project.description }}
-                    </p>
-                    <a
-                      :href="project.url"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="project-flip__link text-decoration-none"
-                      @click.stop
+              <div class="project-item">
+                <div class="project-flip">
+                  <div class="project-flip__inner">
+                    <div
+                      class="project-flip__face project-flip__front"
+                      :class="{ 'project-flip__front--no-image': !project.image }"
                     >
-                      {{ t('home.recentProjects.visitProject') }}
-                      <v-icon size="small" class="ml-1">mdi-open-in-new</v-icon>
-                    </a>
+                      <v-img
+                        v-if="project.image"
+                        :src="project.image"
+                        :alt="project.name"
+                        height="200"
+                        cover
+                      />
+                      <div class="project-flip__title text-h6">
+                        {{ project.name }}
+                      </div>
+                    </div>
+
+                    <div class="project-flip__face project-flip__back">
+                      <h3 class="text-h6 font-weight-bold mb-3">{{ project.name }}</h3>
+                      <p class="text-body-2 project-flip__description mb-4">
+                        {{ project.description }}
+                      </p>
+                      <a
+                        :href="project.url"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-flip__link text-decoration-none"
+                      >
+                        {{ t('home.recentProjects.visitProject') }}
+                        <v-icon size="small" class="ml-1">mdi-open-in-new</v-icon>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -160,7 +155,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useTypewriter } from '@/composables/useTypewriter'
 import type { Project, Service } from '@/types'
@@ -188,14 +183,6 @@ const projects = computed(() => {
     ...items[index]
   }))
 })
-
-const flippedProjectId = ref<number | null>(null)
-
-const toggleFlip = (projectId: number) => {
-  if (window.matchMedia('(hover: none)').matches) {
-    flippedProjectId.value = flippedProjectId.value === projectId ? null : projectId
-  }
-}
 
 const startTypewriter = () => {
   type(t('home.typewriter'))
@@ -263,19 +250,18 @@ watch(locale, () => {
   }
 }
 
+.project-item {
+  height: 100%;
+}
+
 .project-flip {
   perspective: 1000px;
   height: 280px;
   cursor: pointer;
-  outline: none;
 }
 
-.project-flip:hover .project-flip__inner {
-  transform: rotateY(180deg);
-}
-
-@media (hover: none) {
-  .project-flip.is-flipped .project-flip__inner {
+@media (min-width: 600px) {
+  .project-flip:hover .project-flip__inner {
     transform: rotateY(180deg);
   }
 }
@@ -353,6 +339,53 @@ watch(locale, () => {
 
   &:hover {
     opacity: 0.8;
+  }
+}
+
+@media (max-width: 599px) {
+  .project-flip {
+    height: auto;
+    cursor: default;
+    perspective: none;
+  }
+
+  .project-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(51, 51, 51, 0.08);
+  }
+
+  .project-flip__inner {
+    transform: none !important;
+    transform-style: flat;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .project-flip__face {
+    position: relative;
+    inset: auto;
+    backface-visibility: visible;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .project-flip__front {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .project-flip__back {
+    transform: none;
+    border-radius: 0 0 8px 8px;
+
+    h3 {
+      display: none;
+    }
+  }
+
+  .project-flip__description {
+    flex: unset;
   }
 }
 
