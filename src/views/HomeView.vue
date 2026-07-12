@@ -53,6 +53,7 @@
               :key="project.id"
               :href="project.url"
               target="_blank"
+              rel="noopener noreferrer"
               class="project-item mb-2 rounded-lg"
             >
               <template v-slot:prepend>
