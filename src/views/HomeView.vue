@@ -56,7 +56,7 @@
               class="project-item mb-2 rounded-lg"
             >
               <template v-slot:prepend>
-                <v-icon color="primary">mdi-github</v-icon>
+                <v-icon color="primary">{{ getProjectIcon(project.url) }}</v-icon>
               </template>
               <v-list-item-title class="text-h6">
                 {{ project.name }}
@@ -92,11 +92,39 @@ import type { Project } from '@/types'
 const { t, locale } = useI18n()
 const { displayedText, type } = useTypewriter(60)
 
+const getProjectIcon = (url: string) =>
+  url.includes('github.com') ? 'mdi-github' : 'mdi-web'
+
 const projects: Project[] = [
   {
     id: 1,
     name: 'Armony Market',
     url: 'https://github.com/Biagio995/ArmonyMarket'
+  },
+  {
+    id: 2,
+    name: 'Biagio&Eva Wedding',
+    url: 'https://wedding-biagio-eva.vercel.app/'
+  },
+  {
+    id: 3,
+    name: 'VoiceNet',
+    url: 'https://fabrizi.software/voicenet'
+  },
+  {
+    id: 4,
+    name: 'African Explorer',
+    url: 'https://www.africanexplorer.com/'
+  },
+  {
+    id: 5,
+    name: 'World Explorer',
+    url: 'https://www.worldexplorer.it/'
+  },
+  {
+    id: 6,
+    name: 'Gestionale CRM',
+    url: 'https://gestionalecrm.netlify.app/'
   }
 ]
 
