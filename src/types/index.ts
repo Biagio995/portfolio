@@ -1,7 +1,21 @@
+export interface ServicePackage {
+  intro: string
+  features: string[]
+  outro: string
+  note: string
+}
+
+export interface Service {
+  title: string
+  description: string
+  package?: ServicePackage
+}
+
 export interface Project {
   id: number
   name: string
   url: string
+  image?: string
   description?: string
 }
 
@@ -34,6 +48,16 @@ export interface TranslationSchema {
     }
     recentProjects: {
       title: string
+      visitProject: string
+      items: {
+        name: string
+        description: string
+      }[]
+    }
+    services: {
+      title: string
+      noteLabel: string
+      items: Service[]
     }
     contactButton: string
   }

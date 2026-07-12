@@ -12,7 +12,64 @@
       "text": "I am a creative developer with passion for modern and functional design. I create impactful digital experiences."
     },
     "recentProjects": {
-      "title": "Recent Projects"
+      "title": "Recent Projects",
+      "visitProject": "Visit project",
+      "items": [
+        {
+          "name": "Armony Market",
+          "description": "Open-source e-commerce project for managing an online marketplace, with product catalog and modular architecture."
+        },
+        {
+          "name": "Biagio&Eva Wedding",
+          "description": "Multilingual wedding website with digital invitation, countdown, guest directions, photo album, and DJ song suggestions."
+        },
+        {
+          "name": "VoiceNet",
+          "description": "Landing page for an AI voice assistant that answers business calls 24/7, handling bookings and information automatically."
+        },
+        {
+          "name": "African Explorer",
+          "description": "Portal for a tour operator specialized in travel, tours, and safaris in Africa, with destination catalog and special departures."
+        },
+        {
+          "name": "World Explorer",
+          "description": "Website for exclusive tailor-made travel worldwide, with personalized itineraries and special small-group departures."
+        },
+        {
+          "name": "Gestionale CRM",
+          "description": "CRM platform to manage contacts, sales pipeline, and team in a single workspace, with multilingual support."
+        }
+      ]
+    },
+    "services": {
+      "title": "Services",
+      "noteLabel": "Note",
+      "items": [
+        {
+          "title": "WordPress website support",
+          "description": "Starting from €1,100",
+          "package": {
+            "intro": "The €1,100 package includes everything your online store needs to run correctly, securely, and without daily management worries.",
+            "features": [
+              "Minimum interventions (up to 2 hours per month) for fixes, changes, or small improvements.",
+              "Registration of up to 25 new products per month.",
+              "Full updates of the theme and all plugins to ensure security and full site compatibility.",
+              "Backup before every update for maximum data protection.",
+              "Post-update verification to ensure everything works perfectly."
+            ],
+            "outro": "This way you will have a partner who constantly takes care of your e-commerce, preventing problems before they arise and saving you time and money on unexpected failures or emergency interventions.",
+            "note": "The price does not include the purchase or renewal of licenses for premium themes, plugins, or other third-party services. If needed, you will be informed and asked for approval before any purchase."
+          }
+        },
+        {
+          "title": "CRM development with SuiteCRM",
+          "description": "With custom integrations"
+        },
+        {
+          "title": "META campaign integrations",
+          "description": "Facebook and Instagram Ads"
+        }
+      ]
     },
     "contactButton": "Contact Me"
   },

@@ -12,7 +12,64 @@
       "text": "Sono uno sviluppatore creativo con la passione per il design moderno e funzionale. Realizzo esperienze digitali di impatto."
     },
     "recentProjects": {
-      "title": "Progetti Recenti"
+      "title": "Progetti Recenti",
+      "visitProject": "Visita il progetto",
+      "items": [
+        {
+          "name": "Armony Market",
+          "description": "Progetto e-commerce open source per la gestione di un marketplace online, con catalogo prodotti e architettura modulare."
+        },
+        {
+          "name": "Biagio&Eva Wedding",
+          "description": "Sito multilingua per il matrimonio con invito digitale, countdown, indicazioni per gli ospiti, album foto e suggerimenti per il DJ."
+        },
+        {
+          "name": "VoiceNet",
+          "description": "Landing page per un assistente vocale AI che risponde alle chiamate del business 24/7, gestendo prenotazioni e informazioni in automatico."
+        },
+        {
+          "name": "African Explorer",
+          "description": "Portale per tour operator specializzato in viaggi, tour e safari in Africa, con catalogo destinazioni e partenze speciali."
+        },
+        {
+          "name": "World Explorer",
+          "description": "Sito per viaggi esclusivi su misura in tutto il mondo, con itinerari personalizzati e partenze speciali per piccoli gruppi."
+        },
+        {
+          "name": "Gestionale CRM",
+          "description": "Piattaforma CRM per gestire contatti, pipeline di vendita e team in un unico workspace, con supporto multilingua."
+        }
+      ]
+    },
+    "services": {
+      "title": "Servizi",
+      "noteLabel": "Nota",
+      "items": [
+        {
+          "title": "Supporto siti web WordPress",
+          "description": "A partire da 1.100 €",
+          "package": {
+            "intro": "Il pacchetto da 1.100 € include tutto ciò di cui il tuo negozio online ha bisogno per funzionare correttamente, in modo sicuro e senza preoccupazioni per la gestione quotidiana.",
+            "features": [
+              "Interventi minimi (fino a 2 ore al mese) per correzioni, modifiche o piccoli miglioramenti.",
+              "Registrazione di un massimo di 25 nuovi prodotti al mese.",
+              "Aggiornamento completo del tema e di tutti i plugin, per garantire la sicurezza e la piena compatibilità del sito.",
+              "Backup prima di ogni aggiornamento, per la massima protezione dei tuoi dati.",
+              "Verifica dopo gli aggiornamenti, per assicurarsi che tutto funzioni alla perfezione."
+            ],
+            "outro": "In questo modo avrai un partner che si prenderà cura costantemente del tuo e-commerce, prevenendo i problemi prima che si presentino e risparmiandoti tempo e denaro da guasti imprevisti o interventi di emergenza.",
+            "note": "Il prezzo non include l'acquisto o il rinnovo delle licenze per temi premium, plugin o altri servizi di terze parti. Se necessario, verrai informato e autorizzato prima di qualsiasi acquisto."
+          }
+        },
+        {
+          "title": "Creazione CRM con SuiteCRM",
+          "description": "Con eventuali integrazioni personalizzate"
+        },
+        {
+          "title": "Integrazioni campagne META",
+          "description": "Facebook e Instagram Ads"
+        }
+      ]
     },
     "contactButton": "Contattami"
   },

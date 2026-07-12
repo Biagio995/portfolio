@@ -43,27 +43,102 @@
         </v-col>
       </v-row>
 
+      <!-- Services Section -->
+      <v-row justify="center" class="mb-12">
+        <v-col cols="12" md="10" lg="8">
+          <h2 class="text-h4 mb-6 section-title">{{ t('home.services.title') }}</h2>
+          <v-card
+            v-for="(service, index) in services"
+            :key="index"
+            class="service-item mb-4 pa-5"
+            elevation="2"
+          >
+            <div class="d-flex align-center mb-2">
+              <v-icon color="primary" size="large" class="mr-4">
+                {{ serviceIcons[index] }}
+              </v-icon>
+              <div>
+                <h3 class="text-h6 font-weight-bold">{{ service.title }}</h3>
+                <p class="text-body-2 service-description mb-0">{{ service.description }}</p>
+              </div>
+            </div>
+
+            <template v-if="service.package">
+              <p class="text-body-1 mt-4 mb-4">{{ service.package.intro }}</p>
+              <ul class="service-features mb-4">
+                <li
+                  v-for="(feature, featureIndex) in service.package.features"
+                  :key="featureIndex"
+                  class="d-flex align-start mb-2"
+                >
+                  <v-icon color="primary" size="small" class="mr-2 mt-1">mdi-check-circle</v-icon>
+                  <span class="text-body-2">{{ feature }}</span>
+                </li>
+              </ul>
+              <p class="text-body-1 mb-4">{{ service.package.outro }}</p>
+              <p class="text-body-2 service-note mb-0">
+                <strong>{{ t('home.services.noteLabel') }}:</strong> {{ service.package.note }}
+              </p>
+            </template>
+          </v-card>
+        </v-col>
+      </v-row>
+
       <!-- Recent Projects Section -->
       <v-row justify="center" class="mb-12">
         <v-col cols="12" md="10" lg="8">
           <h2 class="text-h4 mb-6 section-title">{{ t('home.recentProjects.title') }}</h2>
-          <v-list bg-color="transparent">
-            <v-list-item
+          <v-row>
+            <v-col
               v-for="project in projects"
               :key="project.id"
-              :href="project.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-item mb-2 rounded-lg"
+              cols="12"
+              sm="6"
             >
-              <template v-slot:prepend>
-                <v-icon color="primary">{{ getProjectIcon(project.url) }}</v-icon>
-              </template>
-              <v-list-item-title class="text-h6">
-                {{ project.name }}
-              </v-list-item-title>
-            </v-list-item>
-          </v-list>
+              <div
+                class="project-flip"
+                :class="{ 'is-flipped': flippedProjectId === project.id }"
+                tabindex="0"
+                @click="toggleFlip(project.id)"
+                @keyup.enter="toggleFlip(project.id)"
+              >
+                <div class="project-flip__inner">
+                  <div
+                    class="project-flip__face project-flip__front"
+                    :class="{ 'project-flip__front--no-image': !project.image }"
+                  >
+                    <v-img
+                      v-if="project.image"
+                      :src="project.image"
+                      :alt="project.name"
+                      height="200"
+                      cover
+                    />
+                    <div class="project-flip__title text-h6">
+                      {{ project.name }}
+                    </div>
+                  </div>
+
+                  <div class="project-flip__face project-flip__back">
+                    <h3 class="text-h6 font-weight-bold mb-3">{{ project.name }}</h3>
+                    <p class="text-body-2 project-flip__description mb-4">
+                      {{ project.description }}
+                    </p>
+                    <a
+                      :href="project.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-flip__link text-decoration-none"
+                      @click.stop
+                    >
+                      {{ t('home.recentProjects.visitProject') }}
+                      <v-icon size="small" class="ml-1">mdi-open-in-new</v-icon>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
 
@@ -85,49 +160,42 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useTypewriter } from '@/composables/useTypewriter'
-import type { Project } from '@/types'
+import type { Project, Service } from '@/types'
 
-const { t, locale } = useI18n()
+const { t, tm, locale } = useI18n()
 const { displayedText, type } = useTypewriter(60)
 
-const getProjectIcon = (url: string) =>
-  url.includes('github.com') ? 'mdi-github' : 'mdi-web'
+const serviceIcons = ['mdi-wordpress', 'mdi-database-cog', 'mdi-facebook']
 
-const projects: Project[] = [
-  {
-    id: 1,
-    name: 'Armony Market',
-    url: 'https://github.com/Biagio995/ArmonyMarket'
-  },
-  {
-    id: 2,
-    name: 'Biagio&Eva Wedding',
-    url: 'https://wedding-biagio-eva.vercel.app/'
-  },
-  {
-    id: 3,
-    name: 'VoiceNet',
-    url: 'https://fabrizi.software/voicenet'
-  },
-  {
-    id: 4,
-    name: 'African Explorer',
-    url: 'https://www.africanexplorer.com/'
-  },
-  {
-    id: 5,
-    name: 'World Explorer',
-    url: 'https://www.worldexplorer.it/'
-  },
-  {
-    id: 6,
-    name: 'Gestionale CRM',
-    url: 'https://gestionalecrm.netlify.app/'
-  }
+const services = computed(() => tm('home.services.items') as Service[])
+
+const projectMeta = [
+  { id: 1, url: 'https://github.com/Biagio995/ArmonyMarket', image: '/images/projects/armony-market.png' },
+  { id: 2, url: 'https://wedding-biagio-eva.vercel.app/', image: '/images/projects/wedding-monogram.png' },
+  { id: 3, url: 'https://fabrizi.software/voicenet' },
+  { id: 4, url: 'https://www.africanexplorer.com/', image: '/images/projects/african-explorer.png' },
+  { id: 5, url: 'https://www.worldexplorer.it/', image: '/images/projects/world-explorer.png' },
+  { id: 6, url: 'https://gestionalecrm.netlify.app/' }
 ]
+
+const projects = computed(() => {
+  const items = tm('home.recentProjects.items') as Pick<Project, 'name' | 'description'>[]
+  return projectMeta.map((meta, index) => ({
+    ...meta,
+    ...items[index]
+  }))
+})
+
+const flippedProjectId = ref<number | null>(null)
+
+const toggleFlip = (projectId: number) => {
+  if (window.matchMedia('(hover: none)').matches) {
+    flippedProjectId.value = flippedProjectId.value === projectId ? null : projectId
+  }
+}
 
 const startTypewriter = () => {
   type(t('home.typewriter'))
@@ -195,14 +263,122 @@ watch(locale, () => {
   }
 }
 
-.project-item {
-  transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.8);
+.project-flip {
+  perspective: 1000px;
+  height: 280px;
+  cursor: pointer;
+  outline: none;
+}
+
+.project-flip:hover .project-flip__inner {
+  transform: rotateY(180deg);
+}
+
+@media (hover: none) {
+  .project-flip.is-flipped .project-flip__inner {
+    transform: rotateY(180deg);
+  }
+}
+
+.project-flip__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.project-flip__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(51, 51, 51, 0.08);
+}
+
+.project-flip__front {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-flip__front--no-image {
+  justify-content: center;
+  align-items: center;
+}
+
+.project-flip__title {
+  color: #333333;
+  padding: 16px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-flip__front--no-image .project-flip__title {
+  flex: unset;
+}
+
+.project-flip__back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+  background: #333333;
+
+  h3 {
+    color: #ffffff;
+  }
+}
+
+.project-flip__description {
+  color: rgba(255, 255, 255, 0.9);
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.project-flip__link {
+  color: #ffffff;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
 
   &:hover {
-    transform: scale(1.03);
-    background: #FFFFFF;
-    box-shadow: 0 2px 12px rgba(51, 51, 51, 0.08);
+    opacity: 0.8;
   }
+}
+
+.service-item {
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(51, 51, 51, 0.1);
+  }
+}
+
+.service-description,
+.service-note {
+  color: #666666;
+}
+
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.home-view :deep(.service-item h3),
+.home-view :deep(.service-item p),
+.home-view :deep(.service-item span) {
+  color: #333333;
 }
 </style>
