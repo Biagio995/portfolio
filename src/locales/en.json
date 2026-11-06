@@ -2,6 +2,7 @@
   "nav": {
     "brand": "My Portfolio",
     "home": "Home",
+    "about": "About Me",
     "contacts": "Contacts"
   },
   "home": {
@@ -9,7 +10,15 @@
     "typewriter": "Designer. Developer. Innovator.",
     "whoAmI": {
       "title": "About Me",
-      "text": "I am a creative developer with passion for modern and functional design. I create impactful digital experiences."
+      "role": "Full Stack Developer",
+      "text": "I am Biagio Carannante, a full stack developer focused on clear, fast digital products built for everyday use. I design and build websites, platforms, and integrations for businesses that need simpler workflows and a concrete user experience.",
+      "highlights": [
+        "Modern web apps and landing pages",
+        "WordPress e-commerce and ongoing support",
+        "SuiteCRM and custom integrations",
+        "Multilingual solutions (IT, EN, EL)"
+      ],
+      "linkedIn": "LinkedIn profile"
     },
     "recentProjects": {
       "title": "Recent Projects",

@@ -36,6 +36,7 @@ export interface TranslationSchema {
   nav: {
     brand: string
     home: string
+    about: string
     contacts: string
     language?: string
   }
@@ -44,7 +45,10 @@ export interface TranslationSchema {
     typewriter: string
     whoAmI: {
       title: string
+      role: string
       text: string
+      highlights: string[]
+      linkedIn: string
     }
     recentProjects: {
       title: string

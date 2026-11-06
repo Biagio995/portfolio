@@ -85,6 +85,7 @@ const drawer = ref(false)
 
 const navItems = computed<NavItem[]>(() => [
   { title: t('nav.home'), to: '/' },
+  { title: t('nav.about'), to: '/#about' },
   { title: t('nav.contacts'), to: '/contatti' }
 ])
 </script>

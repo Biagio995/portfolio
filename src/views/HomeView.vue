@@ -32,13 +32,35 @@
     <!-- Main Content -->
     <v-container class="my-12">
       <!-- About Section -->
-      <v-row justify="center" class="mb-12">
+      <v-row id="about" justify="center" class="mb-12 about-section">
         <v-col cols="12" md="10" lg="8">
           <v-card class="pa-8" elevation="4">
-            <h2 class="text-h4 mb-4">{{ t('home.whoAmI.title') }}</h2>
-            <p class="text-body-1">
+            <h2 class="text-h4 mb-2">{{ t('home.whoAmI.title') }}</h2>
+            <p class="text-subtitle-1 about-role mb-4">{{ t('home.whoAmI.role') }}</p>
+            <p class="text-body-1 mb-6">
               {{ t('home.whoAmI.text') }}
             </p>
+            <ul class="about-highlights mb-6">
+              <li
+                v-for="(highlight, index) in aboutHighlights"
+                :key="index"
+                class="d-flex align-start mb-2"
+              >
+                <v-icon color="primary" size="small" class="mr-2 mt-1">mdi-check-circle</v-icon>
+                <span class="text-body-2">{{ highlight }}</span>
+              </li>
+            </ul>
+            <v-btn
+              :href="linkedInUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="primary"
+              variant="outlined"
+              size="large"
+            >
+              <v-icon start>mdi-linkedin</v-icon>
+              {{ t('home.whoAmI.linkedIn') }}
+            </v-btn>
           </v-card>
         </v-col>
       </v-row>
@@ -163,8 +185,10 @@ import type { Project, Service } from '@/types'
 const { t, tm, locale } = useI18n()
 const { displayedText, type } = useTypewriter(60)
 
+const linkedInUrl = 'https://www.linkedin.com/in/biagio-carannante-fullstackdeveloper/'
 const serviceIcons = ['mdi-wordpress', 'mdi-database-cog', 'mdi-facebook']
 
+const aboutHighlights = computed(() => tm('home.whoAmI.highlights') as string[])
 const services = computed(() => tm('home.services.items') as Service[])
 
 const projectMeta = [
@@ -249,6 +273,21 @@ watch(locale, () => {
     border-color: #333333;
     box-shadow: 0 8px 24px rgba(51, 51, 51, 0.2);
   }
+}
+
+.about-section {
+  scroll-margin-top: 96px;
+}
+
+.about-role {
+  color: #707070;
+  font-weight: 600;
+}
+
+.about-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .project-item {
