@@ -4,8 +4,11 @@
     color="secondary"
   >
     <v-container>
-      <p class="text-white mb-0">
+      <p class="text-white mb-1">
         {{ t('footer.copyright') }}
+      </p>
+      <p class="text-white mb-0 text-body-2">
+        {{ t('footer.vat') }}
       </p>
     </v-container>
   </v-footer>

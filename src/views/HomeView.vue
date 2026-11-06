@@ -173,7 +173,8 @@ const projectMeta = [
   { id: 3, url: 'https://fabrizi.software/voicenet' },
   { id: 4, url: 'https://www.africanexplorer.com/', image: '/images/projects/african-explorer.png' },
   { id: 5, url: 'https://www.worldexplorer.it/', image: '/images/projects/world-explorer.png' },
-  { id: 6, url: 'https://gestionalecrm.netlify.app/' }
+  { id: 6, url: 'https://gestionalecrm.netlify.app/' },
+  { id: 7, url: 'https://seatqui.com/?lang=it', image: '/images/projects/seatqui.svg' }
 ]
 
 const projects = computed(() => {

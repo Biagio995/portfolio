@@ -38,6 +38,10 @@
         {
           "name": "Gestionale CRM",
           "description": "CRM platform to manage contacts, sales pipeline, and team in a single workspace, with multilingual support."
+        },
+        {
+          "name": "SeatQui",
+          "description": "QR table-ordering platform for bars, restaurants, and pizzerias: digital menu, kitchen/floor queues, and real-time updates."
         }
       ]
     },
@@ -86,6 +90,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 - Biagio Carannante"
+    "copyright": "© 2025 - Biagio Carannante",
+    "vat": "VAT EL178155572"
   }
 }

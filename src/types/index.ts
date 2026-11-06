@@ -75,5 +75,6 @@ export interface TranslationSchema {
   }
   footer: {
     copyright: string
+    vat: string
   }
 }
